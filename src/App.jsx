@@ -1,6 +1,7 @@
 
 import './App.css'
 import { CandidateProfile } from './CandidateProfile'
+import { Greeting } from './Greeting'
 import { Product } from './Product'
 import { Welcome } from './Welcome'
 
@@ -8,6 +9,10 @@ function App() {
 
   return (
     <>
+      <Greeting name = "Drishti" message = "Good Evening"/>
+      <Greeting name = "Drishti"/>
+      <Greeting message = "Welcome"/>
+      <Greeting/>
       <Product
         title = "Gaming Laptop"
         price = {1299.99}
