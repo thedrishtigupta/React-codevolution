@@ -4,12 +4,15 @@ import { CandidateProfile } from './CandidateProfile'
 import { CardWrapper } from './CardWrapper'
 import { Greeting } from './Greeting'
 import { Product } from './Product'
+import { UserDetails } from './UserDetails'
 import { Welcome } from './Welcome'
 
 function App() {
 
   return (
     <>
+    <UserDetails name = "Bruce Wayne" isOnline={true} isPremium={true} isNewUser={true} role="vip"/>
+    <UserDetails name = "Peter Parker" isOnline={false} isPremium={true} isNewUser={false} role="admin"/>
     <CardWrapper title = "Card Content">
       <h3>Bruce Wayne</h3>
       <p>He is batman.</p>
