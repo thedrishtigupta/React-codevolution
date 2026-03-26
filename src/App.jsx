@@ -4,6 +4,7 @@ import { CandidateProfile } from './CandidateProfile'
 import { CardWrapper } from './CardWrapper'
 import { Contact } from './Contact'
 import { Greeting } from './Greeting'
+import { Menu } from './Menu'
 import { Newsletter } from './Newsletter'
 import { Product } from './Product'
 import { UserDetails } from './UserDetails'
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <>
+    <Menu/>
     <Contact/>
     <Newsletter/>
     <UserDetails name = "Bruce Wayne" isOnline={true} isPremium={true} isNewUser={true} role="vip"/>
