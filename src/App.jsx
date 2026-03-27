@@ -3,7 +3,9 @@ import './App.css'
 import { CandidateProfile } from './CandidateProfile'
 import { CardWrapper } from './CardWrapper'
 import { Contact } from './Contact'
+import { Counter } from './Counter'
 import { Greeting } from './Greeting'
+import { LoginCard } from './LoginCard'
 import { Menu } from './Menu'
 import { Newsletter } from './Newsletter'
 import { Product } from './Product'
@@ -14,6 +16,9 @@ function App() {
 
   return (
     <>
+    <h1>Code Evolution Course</h1>
+    <Counter/>
+    <LoginCard/>
     <Menu/>
     <Contact/>
     <Newsletter/>
