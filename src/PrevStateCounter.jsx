@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// We are calling the setState function twice, then why is it onl rendering once?
 
 export const PrevStateCounter = () => {
     const [count, setCount] = useState(0);
