@@ -9,6 +9,7 @@ import { LoginCard } from './LoginCard'
 import { Menu } from './Menu'
 import { Newsletter } from './Newsletter'
 import { Product } from './Product'
+import { TodoList } from './TodoList'
 import { UserDetails } from './UserDetails'
 import { Welcome } from './Welcome'
 
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+    <TodoList/>
     <h1>Code Evolution Course</h1>
     <Counter/>
     <LoginCard/>
