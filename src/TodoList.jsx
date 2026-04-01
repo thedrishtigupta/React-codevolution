@@ -30,6 +30,7 @@ export const TodoList = () => {
     console.log("Rendering with items: ", items);
     return (
         <div>
+            <h3>To-do List</h3>
         <ul>
             {
                 items.map((item) => {
