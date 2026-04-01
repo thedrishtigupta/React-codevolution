@@ -1,5 +1,9 @@
 import { useReducer } from "react";
 
+const ADD_ITEM = "ADD_ITEM";
+const REMOVE_ITEM = "REMOVE_ITEM";
+const UPDATE_QUANTITY = "UPDATE_QUANTITY";
+const CLEAR_CART = "CLEAR_CART";
 
 const initialState = {
     items: [], // id, name, price, quantity
@@ -9,7 +13,7 @@ const initialState = {
 
 const reducer = (state, action) => {
     switch(action.type) {
-        case "ADD_ITEM": {
+        case ADD_ITEM: {
             const existingItemIndex = state.items.findIndex(
                 item => item.id === action.payload.id
             )
@@ -38,7 +42,7 @@ const reducer = (state, action) => {
                 totalItems: updatedItems.reduce((total, item) => total + item.quantity, 0)
             }
         }
-        case "REMOVE_ITEM" :{
+        case REMOVE_ITEM :{
             const filteredItems = state.items.filter(
                 (item) => item.id !== action.payload.id
             );
@@ -53,7 +57,7 @@ const reducer = (state, action) => {
                 )
             }
         }
-        case "UPDATE_QUANTITY": {
+        case UPDATE_QUANTITY: {
             if(action.payload.quantity === 0) {
                 return reducer(state, {
                     type: "REMOVE_ITEM",
@@ -76,7 +80,7 @@ const reducer = (state, action) => {
                 ),
             };
         }
-        case "CLEAR_CART": return initialState;
+        case CLEAR_CART: return initialState;
         default: return state;
     }
 }
@@ -97,7 +101,7 @@ export const ShoppingCartWithReducer = () => {
                     {product.name} - ${product.price}
                 </h3>
                 <button onClick={() => dispatch({
-                    type: "ADD_ITEM",
+                    type: ADD_ITEM,
                     payload: product,
                 })}>Add to Cart</button>
             </div>
@@ -116,15 +120,15 @@ export const ShoppingCartWithReducer = () => {
                                     {item.name} - ${item.price} x {item.quantity}
                                 </p>
                                 <button onClick={() => dispatch({
-                                    type: "UPDATE_QUANTITY",
+                                    type: UPDATE_QUANTITY,
                                     payload: {id: item.id, quantity: item.quantity-1},
                                 })}>-</button>
                                 <button onClick={() => dispatch({
-                                    type: "UPDATE_QUANTITY",
+                                    type: UPDATE_QUANTITY,
                                     payload: {id: item.id, quantity: item.quantity+1},
                                 })}>+</button>
                                 <button onClick={() => dispatch({
-                                    type: "REMOVE_ITEM",
+                                    type: REMOVE_ITEM,
                                     payload: {id: item.id}
                                 })}>Remove</button>
                             </div>
@@ -136,7 +140,7 @@ export const ShoppingCartWithReducer = () => {
             <h3>Total Amount: {state.totalAmount}</h3>
             {state.items.length > 0 && (
                 <button onClick={() => dispatch({
-                    type:"CLEAR_CART",
+                    type:CLEAR_CART,
                 })}>Clear Cart</button>
             )}
         </div>
