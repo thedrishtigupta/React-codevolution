@@ -53,6 +53,30 @@ const reducer = (state, action) => {
                 )
             }
         }
+        case "UPDATE_QUANTITY": {
+            if(action.payload.quantity === 0) {
+                return reducer(state, {
+                    type: "REMOVE_ITEM",
+                    payload: {id: action.payload.id},
+                });
+            }
+            const updateQuantityItems = state.items.map((item)=> 
+                item.id === action.payload.id ?
+                {...item, quantity: action.payload.quantity}
+                : item
+            );
+            return {
+                ...state,
+                items: updateQuantityItems,
+                totalAmount: updateQuantityItems.reduce(
+                    (total, item) => total + item.price * item.quantity,0
+                ),
+                totalItems: updateQuantityItems.reduce(
+                    (total, item) => total + item.quantity,0
+                ),
+            };
+        }
+        case "CLEAR_CART": return initialState;
         default: return state;
     }
 }
@@ -92,6 +116,14 @@ export const ShoppingCartWithReducer = () => {
                                     {item.name} - ${item.price} x {item.quantity}
                                 </p>
                                 <button onClick={() => dispatch({
+                                    type: "UPDATE_QUANTITY",
+                                    payload: {id: item.id, quantity: item.quantity-1},
+                                })}>-</button>
+                                <button onClick={() => dispatch({
+                                    type: "UPDATE_QUANTITY",
+                                    payload: {id: item.id, quantity: item.quantity+1},
+                                })}>+</button>
+                                <button onClick={() => dispatch({
                                     type: "REMOVE_ITEM",
                                     payload: {id: item.id}
                                 })}>Remove</button>
@@ -102,6 +134,11 @@ export const ShoppingCartWithReducer = () => {
             )}
             <h3>Total Items: {state.totalItems}</h3>
             <h3>Total Amount: {state.totalAmount}</h3>
+            {state.items.length > 0 && (
+                <button onClick={() => dispatch({
+                    type:"CLEAR_CART",
+                })}>Clear Cart</button>
+            )}
         </div>
         </div>
     );
