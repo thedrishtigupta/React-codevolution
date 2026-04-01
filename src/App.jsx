@@ -1,13 +1,13 @@
 
 import './App.css'
-import { Counter } from './Counter'
+import { CounterWithReducer } from './CounterWithReducer'
 import { ShoppingCart } from './ShoppingCart'
-import { TodoList } from './TodoList'
 
 function App() {
 
   return (
     <>
+    <CounterWithReducer/>
     <h1>Code Evolution Course</h1>
     <ShoppingCart/>
     </>
