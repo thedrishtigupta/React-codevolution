@@ -19,21 +19,30 @@ export const ShoppingCart = () => {
         vueCourse: 39.99,
     };
 
-    const handleAddReactCourse = () => {
-        if (cartItems.reactCourse < 5) {
+    const handleAddCourse = (courseName) => {
+        if (cartItems[courseName] < 5) {
             setCartItems(prev => ({
                 ...prev,
-                reactCourse: prev.reactCourse + 1,
+                [courseName]: prev[courseName] + 1,
             }));
         }
     };
 
-    const handleAddVueCourse = () => {
-        setCartItems(prev => ({
-            ...prev,
-            vueCourse: prev.vueCourse+1,
-        }))
-    };
+    // const handleAddReactCourse = () => {
+    //     if (cartItems.reactCourse < 5) {
+    //         setCartItems(prev => ({
+    //             ...prev,
+    //             reactCourse: prev.reactCourse + 1,
+    //         }));
+    //     }
+    // };
+
+    // const handleAddVueCourse = () => {
+    //     setCartItems(prev => ({
+    //         ...prev,
+    //         vueCourse: prev.vueCourse+1,
+    //     }))
+    // };
 
     const clearCart = () => {
         setCartItems({
@@ -49,13 +58,13 @@ export const ShoppingCart = () => {
                 name="React Course"
                 price={prices.reactCourse}
                 quantity={cartItems.reactCourse}
-                onAddToCart={handleAddReactCourse}
+                onAddToCart={() => handleAddCourse("reactCourse")}
             />
             <ProductCard
                 name="Vue Course"
                 price={prices.vueCourse}
                 quantity={cartItems.vueCourse}
-                onAddToCart={handleAddVueCourse}
+                onAddToCart={() => handleAddCourse("vueCourse")}
             />
             <CartSummary cartItems={cartItems} prices={prices}/>
             <button onClick={clearCart}>Clear Cart</button>
