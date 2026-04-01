@@ -1,5 +1,9 @@
-import { useReducer } from "react";
+// Action describes what happened
+// Dispatch sends those actions to the reducer
+// Reducer decide how to update state
+// Component re-renders with the new state
 
+import { useReducer } from "react";
 
 const initialCount = 0;
 
